@@ -6,7 +6,7 @@ class Toolbox(object):
     def __init__(self):
         self.label = "Toolbox"
         self.alias = ""
-        self.tools = [tool]
+        self.tools = [GarageBuildingIntersection]
 
 
 
