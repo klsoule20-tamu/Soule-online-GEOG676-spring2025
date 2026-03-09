@@ -3,9 +3,9 @@
 #Create a gdb and garage feature
 import arcpy
 
-arcpy.env.workspace = r'C:\Users\klsoule20\Documents\Lab04codes_env'
-folder_path = r'C:\Users\klsoule20\Documents\Lab04'
-gdb_name = 'Test.gdb'
+arcpy.env.workspace = r'C:\Users\klsoule20\Documents\GitHub\Soule-online-GEOG676-spring2025\LAB4\Lab04codes_env'
+folder_path = r'C:\Users\klsoule20\Documents\GitHub\Soule-online-GEOG676-spring2025\LAB4'
+gdb_name = 'NEW_Soule.gdb'
 gdb_path = folder_path + '\\' + gdb_name 
 arcpy.CreateFileGDB_management(folder_path, gdb_name)
 
@@ -18,7 +18,7 @@ arcpy.FeatureClassToGeodatabase_conversion(input_layer, gdb_path)
 garage_points = gdb_path + '\\' + garage_layer_name
 
 #Open campus gdb, copy building feature to our gdb
-campus = r'C:\Users\klsoule20\Documents\Lab04\Campus.gdb-20240114T205617Z-001\Campus.gdb'
+campus = r'C:\Users\klsoule20\Documents\GitHub\Soule-online-GEOG676-spring2025\LAB4\Campus.gdb-20240114T205617Z-001\Campus.gdb'
 buildings_campus = campus + '\Structures'
 buildings = gdb_path + '\\' + 'Buildings'
 
