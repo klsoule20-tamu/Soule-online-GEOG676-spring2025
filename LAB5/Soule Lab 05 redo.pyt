@@ -3,12 +3,11 @@
 import arcpy
 
 class Toolbox(object):
-    """Define the toolbox (the name of the toolbox is the name of the .pyt file)"""
-    self.label = "Toolbox"
-    self.alias = ""
+    def __init__(self):
+        self.label = "Toolbox"
+        self.alias = ""
+        self.tools = [tool]
 
-    #list of tool classes associated with this toolbox 
-    self.tools = [GarageBuildingIntersection]
 
 
 class GarageBuildingIntersection(object):
