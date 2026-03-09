@@ -21,4 +21,55 @@ class GarageBuildingIntersection(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
+        param0 = arcpy.Parameter(
+            displayName="GDB Folder",
+            name="GDBFolder",
+            datatype="DEFolder",
+            parameterType="Required",
+            direction="Input"
+        )
+        param1 = arcpy.Parameter(
+            displayName="GDB Name",
+            name="GDBName",
+            datatype="GPString",
+            parameterType="Required",
+            direction="Input"
+        )
+        param2 = arcpy.Parameter(
+            displayName="Garage CSV File",
+            name="GarageCSVFile",
+            datatype="DEFile",
+            parameterType="Required",
+            direction="Input"
+        )
+        param3 = arcpy.Parameter(
+            displayName="Garage Layer Name",
+            name="GarageLayerName",
+            datatype="GPString",
+            parameterType="Required",
+            direction="Input"
+        )
+        param4 = arcpy.Parameter(
+            displayName="CampusGDB",
+            name="CampusGDB",
+            datatype="DEType",
+            parameterType="Required",
+            direction="Input"
+        )
+        param5 = arcpy.Parameter(
+            displayName="Buffer Distance",
+            name="BufferDistance",
+            datatype="GPDouble",
+            parameterType="Required",
+            direction="Input"
+        )
+        params = [param0, param1, param2, param3, param4, param5]
+        return params
+    
+    def isLicensed(self):
+        """Set whether tool is licensed to execute"""
+        return True
+    
+    def updateParameters(self, parameters):
+        """"""
         
