@@ -14,7 +14,7 @@ class Toolbox:
         self.tools = [GraduatedColorsRenderer]
 
 
-class GraduatedColorsRenderer(object):
+class GraduatedColorsRenderer:
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
         self.label = "graduatedcolor"
