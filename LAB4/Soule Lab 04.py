@@ -3,23 +3,23 @@
 #Create a gdb and garage feature
 import arcpy
 
-arcpy.env.workspace = r'INSERT FILE PATH FOR VOAL DRIVE HERE .... C\Folder\Folder\codes_env'
-folder_path = r'INSERT FILE PARTH FOR LAB 4 FOLDER'
+arcpy.env.workspace = r'C:\Users\klsoule20\Documents\Lab04codes_env'
+folder_path = r'C:\Users\klsoule20\Documents\Lab04'
 gdb_name = 'Test.gdb'
 gdb_path = folder_path + '\\' + gdb_name 
 arcpy.CreateFileGDB_management(folder_path, gdb_name)
 
-csv_path = r 'INSERT FILE PATH FOR GARAGES CSV'
+csv_path = r'C:\Users\klsoule20\Documents\Lab04\garages.csv'
 garage_layer_name = 'Garage_Points'
 garages = arcpy.MakeXYEventLayer_management(csv_path, 'X', 'Y', garage_layer_name)
 
 input_layer = garages
-arcpy.FeatureClassToDatabase_conversion(input_layer, gdb_path)
+arcpy.FeatureClassToGeodatabase_conversion(input_layer, gdb_path)
 garage_points = gdb_path + '\\' + garage_layer_name
 
 #Open campus gdb, copy building feature to our gdb
-campus = r 'Campus.gdb filepath'
-buildings_campus = camput + '\Structures'
+campus = r'C:\Users\klsoule20\Documents\Lab04\Campus.gdb-20240114T205617Z-001\Campus.gdb'
+buildings_campus = campus + '\Structures'
 buildings = gdb_path + '\\' + 'Buildings'
 
 arcpy.Copy_management(buildings_campus, buildings)
