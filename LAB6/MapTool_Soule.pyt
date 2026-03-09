@@ -76,6 +76,24 @@ class GraduatedColorsRenderer:
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
+        readTime = 3
+        start = 0
+        max = 100
+        step = 33
+
+        arcpy.SetProgressor("step", "Validating Project File...", start, max, step)
+        time.sleep(readTime)
+
+        project = arcpy.mp.ArcGISProject(parameters[0].valueAsText)
+
+        cmpus = project.listMaps('Map')[0]
+
+        arcpy.SetProgressorPosition(start + step)
+        arcpy.SetProgressorLabel("Finding your map layer....")
+        time.sleep(readTime)
+
+        
+
         return
 
     def postExecute(self, parameters):
