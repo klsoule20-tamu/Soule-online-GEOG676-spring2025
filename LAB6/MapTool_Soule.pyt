@@ -86,13 +86,43 @@ class GraduatedColorsRenderer:
 
         project = arcpy.mp.ArcGISProject(parameters[0].valueAsText)
 
-        cmpus = project.listMaps('Map')[0]
+        campus =project.listMaps('Map')[0]
 
         arcpy.SetProgressorPosition(start + step)
         arcpy.SetProgressorLabel("Finding your map layer....")
         time.sleep(readTime)
+        arcpy.AddMessage("Finding your map layer....")
 
-        
+        for layer in campus.listLayers():
+            if layer.isFeatureLayer:
+                symbology=layer.symbology
+                if hasattr(symbology, 'renderer'):
+                    if layer.name == parameters[1].valueAsText:
+
+                        arcpy.SetProgressorPosition(start + step*2)
+                        arcpy.SetProgressorLabel("Calculating and classifying...")
+                        time.sleep(readTime)
+                        arcpy.AddMessage("Calculating and classifying...")
+
+                        symbology.updateRenderer('GraduatedColorsRenderer')
+
+                        symbology.renderer.classificationField = "Shape_Area"
+
+                        symbology.renderer.reakCount = 5
+
+                        symbology.renderer.colorRamp = project.listColorRamps('Oranges (5 Classes)')[0]
+
+                        layer.symbology = symbology
+
+                    else:
+                        print("No Layers found")
+
+            arcpy.SetProgressorPosition(start + step*3)
+            arcpy.SetProgressorLabel("Saving")
+            time.sleep(readTime)
+            arcpy.AddMessage("Saving...")
+
+            project.saveACopy(parameters[2].valueAsText + "\\" + parameters[3].valueAsText + ".aprx")
 
         return
 
