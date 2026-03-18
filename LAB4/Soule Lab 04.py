@@ -5,7 +5,7 @@ import arcpy
 
 arcpy.env.workspace = r'C:\Users\klsoule20\Documents\GitHub\Soule-online-GEOG676-spring2025\LAB4\Lab04codes_env'
 folder_path = r'C:\Users\klsoule20\Documents\GitHub\Soule-online-GEOG676-spring2025\LAB4'
-gdb_name = 'NEW_Soule.gdb'
+gdb_name = 'NEW_NEW_Soule.gdb'
 gdb_path = folder_path + '\\' + gdb_name 
 arcpy.CreateFileGDB_management(folder_path, gdb_name)
 
