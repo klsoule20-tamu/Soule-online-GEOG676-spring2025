@@ -85,7 +85,7 @@ class GarageBuildingIntersection(object):
         garages=arcpy.MakeXYEventLayer_management(csv_path, 'X', 'Y', garage_layer_name)
 
         input_layer = garages
-        arcpy.FeatureClassToFeatureClass_conversion(input_layer, gdb_path)
+        arcpy.conversion.ExportFeatures(input_layer, gdb_path)
         garage_points= gdb_path + '\\' + garage_layer_name
 
         campus = parameters[4].valueAsText
@@ -103,6 +103,6 @@ class GarageBuildingIntersection(object):
 
         arcpy.Intersect_analysis([garageBuffered, buildings], gdb_path + '\Garage_Buildigs_Intersection', 'All')
 
-        arcpy.TableToTable_conversion( gdb_path + '\Garage_Buildings_Intersection.dbf', r'', 'nearbyBuildings')
+        arcpy.TableToTable_conversion( gdb_path + '\Garage_Buildings_Intersection.dbf', r'C:\Users\klsoule20\Documents\GitHub\Soule-online-GEOG676-spring2025\LAB5', 'nearbyBuildings')
 
         return None     
